@@ -3,12 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safety Products Catalog | Exposhera Security Force Pvt. Ltd.</title>
-    <meta name="description" content="Explore our catalog of high-visibility orange safety vests, winter security jackets, safety helmets, and movable traffic barriers distributed across Delhi NCR.">
+    <title>Industrial Safety Products | Exposhera Security Force Pvt. Ltd.</title>
+    <meta name="description" content="Explore our complete catalog of industrial safety products including reflective vests, safety shoes,Construction helmets, PPE gloves, fall arrest harnesses and road safety barriers in Delhi NCR.">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Extra styles for products search bar and catalog details modal */
+        .products-search-bar input:focus {
+            border-color: var(--accent) !important;
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+        .modal-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .modal-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        .detail-spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+        .detail-spec-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.8rem;
+        }
+        .detail-spec-table td:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+            width: 40%;
+        }
+        .detail-spec-table td:last-child {
+            color: var(--text-muted);
+        }
+        .load-more-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
@@ -57,7 +97,7 @@
                     <div class="bio-corner tl"></div><div class="bio-corner tr"></div><div class="bio-corner bl"></div><div class="bio-corner br"></div>
                 </a>
                 <a href="products.html" class="bio-btn active">
-                    <i class="fas fa-shield-alt"></i><span>Solutions</span>
+                    <i class="fas fa-shield-alt"></i><span>Products</span>
                     <div class="layer-scan"></div><div class="layer-pulse"></div><div class="layer-laser"></div>
                     <div class="bio-corner tl"></div><div class="bio-corner tr"></div><div class="bio-corner bl"></div><div class="bio-corner br"></div>
                 </a>
@@ -102,7 +142,7 @@
             <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
             <a href="about.html"><i class="fas fa-building"></i> <span>About Us</span></a>
             <a href="services.html"><i class="fas fa-shield-alt"></i> <span>Services</span></a>
-            <a href="products.html" class="active"><i class="fas fa-shield-alt"></i> <span>Solutions</span></a>
+            <a href="products.html" class="active"><i class="fas fa-shield-alt"></i> <span>Products</span></a>
             <a href="certifications.html"><i class="fas fa-award"></i> <span>Certifications</span></a>
             <a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact Us</span></a>
         </div>
@@ -116,147 +156,54 @@
 
     <!-- Page Banner Area -->
     <section class="page-banner">
-        <div class="page-banner-bg" style="background-image: linear-gradient(135deg, rgba(8, 12, 20, 0.9) 0%, rgba(10, 43, 78, 0.75) 100%), url('images/service_guard.png');"></div>
+        <div class="page-banner-bg" style="background-image: linear-gradient(135deg, rgba(8, 12, 20, 0.9) 0%, rgba(10, 43, 78, 0.75) 100%), url('images/prod_vest.png');"></div>
         <div class="page-banner-content container">
-            <h1>Integrated Security <span class="highlight">Solutions</span></h1>
-            <p>Strategic, Compliant, and Tailored Protection Packages for Delhi NCR</p>
+            <h1>Industrial Safety <span class="highlight">Products</span></h1>
+            <p>Premium PPE and Industrial Safety Equipment for Construction, Infrastructure, and Commercial Facilities</p>
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
                 <span>/</span>
-                <span class="active">Solutions</span>
+                <span class="active">Products</span>
             </div>
         </div>
     </section>
 
     <!-- Products Catalog Grid Area -->
-    <section class="section-padding" style="background-color: var(--bg-light);">
+    <section class="section-padding" style="background-color: var(--bg-light); position: relative;">
         <div class="container">
+            <!-- Search queries by name and code -->
+            <div class="products-search-bar reveal-slide" style="max-width: 800px; margin: 0 auto 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="search-input-wrapper" style="position:relative;">
+                    <i class="fas fa-search" style="position:absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="text" id="productSearchName" placeholder="Search by product name..." style="width: 100%; padding: 12px 16px 12px 45px; border-radius: 50px; border: 1px solid var(--border-light); outline: none; transition: var(--transition-fast); background: var(--bg-white);">
+                </div>
+                <div class="search-input-wrapper" style="position:relative;">
+                    <i class="fas fa-barcode" style="position:absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="text" id="productSearchCode" placeholder="Search by product code (e.g. RN-01)..." style="width: 100%; padding: 12px 16px 12px 45px; border-radius: 50px; border: 1px solid var(--border-light); outline: none; transition: var(--transition-fast); background: var(--bg-white);">
+                </div>
+            </div>
+
             <!-- Category Filtering buttons -->
-            <div class="products-filter-bar reveal-slide">
-                <button class="filter-btn active" data-filter="all">All Solutions</button>
-                <button class="filter-btn" data-filter="guarding">Guarding Services</button>
-                <button class="filter-btn" data-filter="executive">Executive & VIP Cover</button>
-                <button class="filter-btn" data-filter="corporate">Corporate Security</button>
-                <button class="filter-btn" data-filter="residential">Residential & Gated</button>
+            <div class="products-filter-bar reveal-slide" style="margin-bottom: 40px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="jackets">Safety Jackets</button>
+                <button class="filter-btn" data-filter="shoes">Safety Shoes</button>
+                <button class="filter-btn" data-filter="helmets">Safety Helmets</button>
+                <button class="filter-btn" data-filter="gloves">Safety Gloves</button>
+                <button class="filter-btn" data-filter="road">Road Safety</button>
+                <button class="filter-btn" data-filter="welding">Welding Equipment</button>
+                <button class="filter-btn" data-filter="fall">Fall Protection</button>
             </div>
 
-            <div class="products-grid">
-                <!-- Solution 1 -->
-                <div class="product-card reveal-slide" data-category="guarding">
-                    <div class="product-img-wrapper">
-                        <img src="images/service_guard.png" alt="Elite Security Guards">
-                        <span class="product-badge">Guarding Services</span>
-                    </div>
-                    <div class="product-body">
-                        <h3>Elite Security Guards</h3>
-                        <p class="product-desc">Highly disciplined, physical-check cleared, uniformed personnel for corporate gate operations, visitor registries, and active perimeter logs.</p>
-                        <div class="product-spec">
-                            <span>Duty Shifts</span>
-                            <span>8 / 12 Hours (24/7 Cover)</span>
-                        </div>
-                        <div class="product-footer">
-                            <a href="#" class="btn btn-primary float-enquiry">Request Deployment Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Solution 2 -->
-                <div class="product-card reveal-slide" data-category="guarding">
-                    <div class="product-img-wrapper">
-                        <img src="images/service_gunman.png" alt="Armed Gunmen Escorts">
-                        <span class="product-badge">Guarding Services</span>
-                    </div>
-                    <div class="product-body">
-                        <h3>Armed Gunmen Escorts</h3>
-                        <p class="product-desc">Seasoned defensive guards holding active, verified personal firearms licenses. Ideal for banks, cash vaults, and high-value asset transits.</p>
-                        <div class="product-spec">
-                            <span>License Verification</span>
-                            <span>Police Cleared / Certified</span>
-                        </div>
-                        <div class="product-footer">
-                            <a href="#" class="btn btn-primary float-enquiry">Request Deployment Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Solution 3 -->
-                <div class="product-card reveal-slide" data-category="executive">
-                    <div class="product-img-wrapper">
-                        <img src="images/service_bouncer.png" alt="Executive Bouncers">
-                        <span class="product-badge">Executive & VIP Cover</span>
-                    </div>
-                    <div class="product-body">
-                        <h3>Executive Bouncers</h3>
-                        <p class="product-desc">Imposing, trained bouncer commandos for VIP close protection, celebrity escorting, private events, and rapid conflict resolution.</p>
-                        <div class="product-spec">
-                            <span>Build / Stature</span>
-                            <span>Rigid Fitness Parameters</span>
-                        </div>
-                        <div class="product-footer">
-                            <a href="#" class="btn btn-primary float-enquiry">Book VIP Protection</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Solution 4 -->
-                <div class="product-card reveal-slide" data-category="corporate">
-                    <div class="product-img-wrapper">
-                        <img src="images/service_corporate.png" alt="Corporate Complex Defense">
-                        <span class="product-badge">Corporate Security</span>
-                    </div>
-                    <div class="product-body">
-                        <h3>Corporate Complex Defense</h3>
-                        <p class="product-desc">Integrated gate logs, ID badge compliance, server room clearance, CCTV feed audit systems, and fire hazard emergency teams.</p>
-                        <div class="product-spec">
-                            <span>Compliance Level</span>
-                            <span>PSARA & Labor Law Compliant</span>
-                        </div>
-                        <div class="product-footer">
-                            <a href="#" class="btn btn-primary float-enquiry">Request Facility Audit</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Solution 5 -->
-                <div class="product-card reveal-slide" data-category="residential">
-                    <div class="product-img-wrapper">
-                        <img src="images/service_event.png" alt="Event Crowd Control">
-                        <span class="product-badge">Residential & Events</span>
-                    </div>
-                    <div class="product-body">
-                        <h3>Event Crowd Control</h3>
-                        <p class="product-desc">Pre-event security sweeps, metal detector checkpoint management, crowd channeling barriers, and green room cordons.</p>
-                        <div class="product-spec">
-                            <span>Deployment Type</span>
-                            <span>Single or Multi-Day Setup</span>
-                        </div>
-                        <div class="product-footer">
-                            <a href="#" class="btn btn-primary float-enquiry">Request Event Cover</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Solution 6 -->
-                <div class="product-card reveal-slide" data-category="residential">
-                    <div class="product-img-wrapper">
-                        <img src="images/service_residential.png" alt="Residential Society Protection">
-                        <span class="product-badge">Residential & Gated</span>
-                    </div>
-                    <div class="product-body">
-                        <h3>Residential Society Protection</h3>
-                        <p class="product-desc">Perimeter checkups, visitor intercom clearances, domestic staff check-ins, parking zone discipline, and night patrols.</p>
-                        <div class="product-spec">
-                            <span>Support Desk</span>
-                            <span>24/7 Central Command Link</span>
-                        </div>
-                        <div class="product-footer">
-                            <a href="#" class="btn btn-primary float-enquiry">Request Deployment Quote</a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Products Dynamic Grid -->
+            <div class="products-grid" id="productsCatalogGrid">
+                <!-- Cards will render here dynamically via JavaScript -->
             </div>
-        </div>
-    </section>
+
+            <!-- Load More button to handle performance -->
+            <div class="load-more-container" id="loadMoreContainer">
+                <button id="loadMoreBtn" class="btn btn-outline" style="min-width: 180px;"><i class="fas fa-sync-alt"></i> Load More Products</button>
+            </div>
         </div>
     </section>
 
@@ -264,11 +211,11 @@
     <section class="cta-section section-padding">
         <div class="container">
             <div class="cta-wrapper">
-                <h2>Need a Customized Security Plan for Your Organization?</h2>
-                <p>We provide comprehensive physical security audits, custom threat analysis, and rapid guard deployments across Delhi NCR.</p>
+                <h2>Need a Custom Safety Supply Quote for Your Project?</h2>
+                <p>We supply wholesale safety equipment, reflective uniforms, and heavy-duty protective gears directly to industrial complexes and construction zones in NCR.</p>
                 <div class="cta-buttons">
                     <a href="tel:9560393262" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call +91 95603 93262</a>
-                    <a href="#" class="btn btn-outline-white float-enquiry"><i class="fas fa-envelope"></i> Request Free Audit</a>
+                    <a href="#" class="btn btn-outline-white float-enquiry"><i class="fas fa-envelope"></i> Request Custom Quote</a>
                 </div>
             </div>
         </div>
@@ -321,7 +268,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="products.html">Security Solutions</a></li>
+                        <li><a href="products.html">Products</a></li>
                         <li><a href="certifications.html">Certifications</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
@@ -371,35 +318,84 @@
         <a href="#" class="float-btn float-enquiry"><i class="fas fa-envelope"></i> <span>Enquire</span></a>
     </div>
 
+    <!-- Product Detail Modal Overlay -->
+    <div class="form-overlay" id="productDetailModal" style="display: none; z-index: 10002;">
+        <div class="form-popup" style="max-width: 800px; width: 92%; padding: 30px; border-radius: 20px;">
+            <button class="close-form" id="closeDetailModal">&times;</button>
+            <div class="modal-detail-content">
+                <div class="modal-detail-grid">
+                    <div class="modal-detail-image-wrapper" style="display: flex; align-items: center; justify-content: center;">
+                        <img id="detailModalImage" src="" alt="Product Image" style="max-width: 100%; max-height: 350px; border-radius: 12px; border: 1px solid rgba(6, 182, 212, 0.12); background-color: #fff; padding: 12px; object-fit: contain;">
+                    </div>
+                    <div class="modal-detail-info" style="display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <span class="product-badge" id="detailModalCategory" style="margin-bottom: 8px; display: inline-block;">Category</span>
+                            <h3 id="detailModalName" style="font-size: 1.6rem; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Product Name</h3>
+                            <p style="color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;" id="detailModalCode">Code: RN-01</p>
+                            <p id="detailModalDesc" class="product-desc" style="margin-bottom: 16px; font-size: 0.9rem;">Description</p>
+                            
+                            <div class="detail-section-specs" style="margin-bottom: 16px;">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 6px; color: var(--primary-dark); font-weight: 600;">Specifications:</h4>
+                                <div id="detailModalSpecs"></div>
+                            </div>
+
+                            <div class="detail-section-features" style="margin-bottom: 16px;">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 6px; color: var(--primary-dark); font-weight: 600;">Key Features:</h4>
+                                <ul id="detailModalFeatures" style="font-size: 0.85rem; padding-left: 18px; line-height: 1.5; color: var(--text-muted);"></ul>
+                            </div>
+
+                            <div class="detail-section-apps" style="margin-bottom: 16px;">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 6px; color: var(--primary-dark); font-weight: 600;">Applications:</h4>
+                                <ul id="detailModalApps" style="font-size: 0.85rem; padding-left: 18px; line-height: 1.5; color: var(--text-muted);"></ul>
+                            </div>
+
+                            <div class="detail-row-moq" style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 20px; font-weight: 700; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 12px;">
+                                <div>MOQ: <span id="detailModalMOQ" style="color: var(--accent);">100 Pcs</span></div>
+                                <div>Colors: <span id="detailModalColors" style="color: var(--accent);">Orange, Green</span></div>
+                            </div>
+                        </div>
+
+                        <div class="detail-actions-row" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button id="detailModalQuoteBtn" class="btn btn-primary" style="flex: 1; padding: 10px 16px; font-size: 0.85rem;"><i class="fas fa-file-invoice-dollar"></i> Request Quote</button>
+                            <a id="detailModalWABtn" href="" target="_blank" class="btn btn-wa" style="flex: 1; padding: 10px 16px; font-size: 0.85rem;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                            <a id="detailModalCallBtn" href="tel:9560393262" class="btn btn-outline" style="flex: 1; padding: 10px 16px; font-size: 0.85rem;"><i class="fas fa-phone"></i> Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Enquiry Form Overlay Popup -->
     <div class="form-overlay" id="formOverlay">
         <div class="form-popup">
             <button class="close-form" id="closeForm">&times;</button>
             <div id="formContent">
-                <h3>Send Solution Enquiry</h3>
-                <p>Fill out the form details and our security planners will respond back in 24 hours.</p>
+                <h3>Send Product Enquiry</h3>
+                <p>Fill out the form details and our safety consultants will respond back in 24 hours.</p>
                 <form id="enquiryForm">
                     <input type="text" placeholder="Your Name" required>
                     <input type="tel" placeholder="Phone Number" required>
                     <input type="email" placeholder="Email Address">
-                    <select required>
-                        <option value="">Select Service / Solution Required</option>
-                        <option>Elite Security Guards</option>
-                        <option>Executive Bouncers</option>
-                        <option>Armed Gunmen Escorts</option>
-                        <option>Corporate Complex Defense</option>
-                        <option>Event Crowd Control</option>
-                        <option>Residential Society Protection</option>
+                    <select id="enquiryProductSelect" required>
+                        <option value="">Select Category / Product</option>
+                        <option>Reflective Safety Jackets</option>
+                        <option>Safety Shoes</option>
+                        <option>Safety Helmets</option>
+                        <option>Safety Gloves</option>
+                        <option>Road Safety Products</option>
+                        <option>Welding Safety Equipment</option>
+                        <option>Fall Protection Gear</option>
                         <option>Other Requirements</option>
                     </select>
-                    <textarea placeholder="Tell us about your security needs..." rows="3"></textarea>
-                    <button type="submit" class="btn btn-primary submit-btn">Submit Solution Enquiry</button>
+                    <textarea id="enquiryTextarea" placeholder="Tell us about your requirements..." rows="3"></textarea>
+                    <button type="submit" class="btn btn-primary submit-btn">Submit Enquiry</button>
                 </form>
             </div>
             <div class="success-msg" id="successMsg">
                 <i class="fas fa-check-circle"></i>
                 <h3>Enquiry Submitted!</h3>
-                <p>Our security advisors will contact you shortly.</p>
+                <p>Our safety advisors will contact you shortly.</p>
             </div>
         </div>
     </div>
@@ -408,7 +404,223 @@
     <button class="scroll-top-btn" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
 
     <!-- Custom JS Scripts -->
+    <script src="js/products-data.js"></script>
     <script src="js/main.js"></script>
     <script src="js/particles.js"></script>
+
+    <!-- Dynamic Catalog Render Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('productsCatalogGrid');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const searchName = document.getElementById('productSearchName');
+            const searchCode = document.getElementById('productSearchCode');
+            
+            // Modal Elements
+            const detailModal = document.getElementById('productDetailModal');
+            const closeDetailBtn = document.getElementById('closeDetailModal');
+            const dImage = document.getElementById('detailModalImage');
+            const dCategory = document.getElementById('detailModalCategory');
+            const dName = document.getElementById('detailModalName');
+            const dCode = document.getElementById('detailModalCode');
+            const dDesc = document.getElementById('detailModalDesc');
+            const dSpecs = document.getElementById('detailModalSpecs');
+            const dFeatures = document.getElementById('detailModalFeatures');
+            const dApps = document.getElementById('detailModalApps');
+            const dMOQ = document.getElementById('detailModalMOQ');
+            const dColors = document.getElementById('detailModalColors');
+            const dQuoteBtn = document.getElementById('detailModalQuoteBtn');
+            const dWABtn = document.getElementById('detailModalWABtn');
+            
+            let activeFilter = 'all';
+            let queryName = '';
+            let queryCode = '';
+            
+            // Check for category filter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('category');
+            if (catParam) {
+                const validCategories = ['jackets', 'shoes', 'helmets', 'gloves', 'road', 'welding', 'fall'];
+                if (validCategories.includes(catParam.toLowerCase())) {
+                    activeFilter = catParam.toLowerCase();
+                    filterButtons.forEach(btn => {
+                        if (btn.getAttribute('data-filter') === activeFilter) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                }
+            }
+            
+            let displayedCount = 24;
+            const itemsPerPage = 24;
+            
+            // Filter products
+            function getFilteredProducts() {
+                return PRODUCTS_DATA.filter(p => {
+                    const matchCategory = activeFilter === 'all' || p.category === activeFilter;
+                    const matchName = queryName === '' || p.name.toLowerCase().includes(queryName.toLowerCase());
+                    const matchCode = queryCode === '' || p.code.toLowerCase().includes(queryCode.toLowerCase());
+                    return matchCategory && matchName && matchCode;
+                });
+            }
+
+            // Render catalog grid
+            function renderCatalog() {
+                grid.innerHTML = '';
+                const filtered = getFilteredProducts();
+                
+                if (filtered.length === 0) {
+                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-size: 1.1rem;">No matching safety products found.</div>`;
+                    loadMoreBtn.style.display = 'none';
+                    return;
+                }
+                
+                const slice = filtered.slice(0, displayedCount);
+                
+                slice.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card reveal-slide active';
+                    card.innerHTML = `
+                        <div class="product-img-wrapper">
+                            <img src="${p.image}" alt="${p.name}" loading="lazy">
+                            <span class="product-badge">${p.code}</span>
+                        </div>
+                        <div class="product-body">
+                            <h3>${p.name}</h3>
+                            <p class="product-desc">${p.description.substring(0, 100)}...</p>
+                            <div class="product-spec">
+                                <span>MOQ</span>
+                                <span>${p.moq}</span>
+                            </div>
+                            <div class="product-footer">
+                                <button class="btn btn-primary request-quote-btn" style="width:100%;">View Details</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Card clicks opens details modal
+                    card.addEventListener('click', () => {
+                        openProductDetails(p);
+                    });
+                    
+                    grid.appendChild(card);
+                });
+                
+                // Show load more button if there are more items
+                if (filtered.length > displayedCount) {
+                    loadMoreBtn.style.display = 'inline-block';
+                } else {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            // Open Detail Modal
+            function openProductDetails(p) {
+                dImage.src = p.image;
+                dCategory.textContent = p.category.toUpperCase();
+                dName.textContent = p.name;
+                dCode.textContent = `Code: ${p.code}`;
+                dDesc.textContent = p.description;
+                dMOQ.textContent = p.moq;
+                dColors.textContent = p.colors.join(', ');
+
+                // Populate Specs Table
+                dSpecs.innerHTML = '';
+                const tbl = document.createElement('table');
+                tbl.className = 'detail-spec-table';
+                Object.keys(p.specs).forEach(k => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${k}</td><td>${p.specs[k]}</td>`;
+                    tbl.appendChild(tr);
+                });
+                dSpecs.appendChild(tbl);
+
+                // Populate Features List
+                dFeatures.innerHTML = '';
+                p.features.forEach(f => {
+                    const li = document.createElement('li');
+                    li.textContent = f;
+                    dFeatures.appendChild(li);
+                });
+
+                // Populate Applications List
+                dApps.innerHTML = '';
+                p.apps.forEach(a => {
+                    const li = document.createElement('li');
+                    li.textContent = a;
+                    dApps.appendChild(li);
+                });
+
+                // Set links
+                dWABtn.href = `https://wa.me/919560393262?text=Hi%2C%20I%20am%20interested%20in%20product%20${p.name}%20(Code%3A%20${p.code}).%20Please%20provide%20a%20price%20quote.`;
+                
+                // Quote form link
+                dQuoteBtn.onclick = () => {
+                    detailModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    const overlay = document.getElementById('formOverlay');
+                    const select = document.getElementById('enquiryProductSelect');
+                    const textarea = document.getElementById('enquiryTextarea');
+                    
+                    if (overlay && select) {
+                        select.value = 'Other Requirements';
+                        if (textarea) textarea.value = `I would like to request a quote for: ${p.name} (Code: ${p.code})`;
+                        overlay.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                };
+
+                detailModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close Detail Modal
+            function closeProductDetails() {
+                detailModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            if (closeDetailBtn) closeDetailBtn.addEventListener('click', closeProductDetails);
+            detailModal.addEventListener('click', (e) => {
+                if (e.target === detailModal) closeProductDetails();
+            });
+
+            // Filter Buttons Event Binding
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilter = btn.getAttribute('data-filter');
+                    displayedCount = itemsPerPage; // Reset page count
+                    renderCatalog();
+                });
+            });
+
+            // Search inputs event binding
+            searchName.addEventListener('input', (e) => {
+                queryName = e.target.value;
+                displayedCount = itemsPerPage;
+                renderCatalog();
+            });
+            searchCode.addEventListener('input', (e) => {
+                queryCode = e.target.value;
+                displayedCount = itemsPerPage;
+                renderCatalog();
+            });
+
+            // Load more button event
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    displayedCount += itemsPerPage;
+                    renderCatalog();
+                });
+            }
+
+            // Initial render
+            renderCatalog();
+        });
+    </script>
 </body>
 </html>
