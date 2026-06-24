@@ -568,12 +568,13 @@ img {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .header-actions .btn {
-    padding: 10px 22px;
-    font-size: 0.85rem;
+    padding: 9px 16px;
+    font-size: 0.82rem;
     white-space: nowrap;
 }
 
@@ -2896,6 +2897,32 @@ img {
 }
 
 /* Responsive Media Queries */
+
+/* Mid-width: save space by collapsing Login/Admin to icon-only pills */
+@media (max-width: 1280px) {
+    /* Hide the Call Now button to reclaim space */
+    .header-actions .btn-outline:not(.btn-login-nav):not(.btn-admin-nav) {
+        display: none;
+    }
+    /* Collapse Login & Admin to icon-only square pills */
+    .btn-login-nav,
+    .btn-admin-nav {
+        padding: 9px 11px !important;
+        font-size: 0 !important;          /* hide label text */
+        gap: 0 !important;
+        min-width: 36px;
+        justify-content: center;
+    }
+    .btn-login-nav i,
+    .btn-admin-nav i {
+        font-size: 0.95rem !important;    /* keep icon visible */
+        margin: 0 !important;
+    }
+    .header-actions {
+        gap: 6px;
+    }
+}
+
 @media (max-width: 1100px) {
     .container {
         padding: 0 20px;
