@@ -7,15 +7,15 @@
 
 :root {
     /* Color Palette */
-    --primary: #0a2b4e;
-    --primary-dark: #061c33;
-    --primary-light: #123e6f;
-    --accent: #e67e22;
-    --accent-hover: #d35400;
-    --accent-light: rgba(230, 126, 34, 0.15);
+    --primary: #0f172a;          /* Sleek Slate 900 */
+    --primary-dark: #020617;     /* Deep Space Slate 950 */
+    --primary-light: #1e293b;    /* Slate 800 */
+    --accent: #06b6d4;           /* Vibrant Cyan/Teal */
+    --accent-hover: #0891b2;     /* Darker Teal */
+    --accent-light: rgba(6, 182, 212, 0.15);
     
     /* Neutral Colors */
-    --bg-dark: #080c14;
+    --bg-dark: #090d16;          /* Darker Midnight */
     --bg-dark-card: #0e1524;
     --bg-light: #f8fafc;
     --bg-white: #ffffff;
@@ -32,7 +32,7 @@
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
     --shadow-lg: 0 20px 40px -15px rgba(0,0,0,0.2);
-    --shadow-glow: 0 0 20px rgba(230, 126, 34, 0.4);
+    --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.4);
     --shadow-blue-glow: 0 0 20px rgba(10, 132, 255, 0.2);
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.2s ease;
