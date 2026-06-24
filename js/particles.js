@@ -10,15 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let particles = [];
     let particleCount = 45;
     let clickRipple = null;
+    let mouse = { x: null, y: null };
 
     const resizeCanvas = () => {
-        canvas.width = canvas.parentElement.offsetWidth;
-        canvas.height = canvas.parentElement.offsetHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         initParticles();
     };
 
     class Particle {
-        constructor(x, y, isTemp = False) {
+        constructor(x, y, isTemp = false) {
             this.x = x !== undefined ? x : Math.random() * canvas.width;
             this.y = y !== undefined ? y : Math.random() * canvas.height;
             this.size = Math.random() * 2 + 1.5;
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Boundary collision
+            // Boundary wrap around or bounce
             if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
             if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
 
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Draw core particle
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.isSpecial ? `rgba(6, 182, 212, ${0.7 * alpha})` : `rgba(30, 41, 59, ${0.4 * alpha})`;
+            ctx.fillStyle = this.isSpecial ? `rgba(6, 182, 212, ${0.7 * alpha})` : `rgba(30, 41, 59, ${0.35 * alpha})`;
             ctx.fill();
 
             // High-tech dashboard scanning effects
@@ -70,21 +71,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pulseRadius = this.size * 3 + Math.sin(this.pulse) * 5;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, Math.max(1, pulseRadius), 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(6, 182, 212, ${0.2 * alpha})`;
+                ctx.strokeStyle = `rgba(6, 182, 212, ${0.18 * alpha})`;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
 
                 // Target hair lines
                 ctx.beginPath();
-                ctx.moveTo(this.x - 7, this.y); ctx.lineTo(this.x + 7, this.y);
-                ctx.moveTo(this.x, this.y - 7); ctx.lineTo(this.x, this.y + 7);
-                ctx.strokeStyle = `rgba(6, 182, 212, ${0.15 * alpha})`;
+                ctx.moveTo(this.x - 6, this.y); ctx.lineTo(this.x + 6, this.y);
+                ctx.moveTo(this.x, this.y - 6); ctx.lineTo(this.x, this.y + 6);
+                ctx.strokeStyle = `rgba(6, 182, 212, ${0.12 * alpha})`;
                 ctx.lineWidth = 0.5;
                 ctx.stroke();
 
                 // Draw live coordinate text label
                 ctx.font = '6px monospace';
-                ctx.fillStyle = `rgba(6, 182, 212, ${0.35 * alpha})`;
+                ctx.fillStyle = `rgba(6, 182, 212, ${0.3 * alpha})`;
                 const posX = Math.floor(this.x);
                 const posY = Math.floor(this.y);
                 ctx.fillText(`TRK_${posX}:${posY}`, this.x + 10, this.y - 3);
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth < 768) {
             particleCount = 18;
         } else {
-            particleCount = 40;
+            particleCount = 45;
         }
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
@@ -105,8 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const drawDashboardGrid = () => {
-        const gridSpacing = 70;
-        ctx.strokeStyle = 'rgba(6, 182, 212, 0.025)';
+        const gridSpacing = 80;
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.015)';
         ctx.lineWidth = 0.5;
 
         // Draw Vertical Grid Lines
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
                 if (dist < maxDist) {
-                    const alpha = (1 - dist / maxDist) * 0.18;
+                    const alpha = (1 - dist / maxDist) * 0.15;
                     const p1Alpha = particles[i].isTemporary ? particles[i].lifespan : 1;
                     const p2Alpha = particles[j].isTemporary ? particles[j].lifespan : 1;
                     const connectionAlpha = alpha * Math.min(p1Alpha, p2Alpha);
@@ -151,37 +152,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Click interactive ripple and node physics
-    canvas.addEventListener('click', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
+    // Tracking crosshair reticle following the cursor
+    const drawMouseTracker = () => {
+        if (mouse.x === null || mouse.y === null) return;
+        
+        // Very subtle grid alignment line sweep
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.03)';
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(0, mouse.y); ctx.lineTo(canvas.width, mouse.y);
+        ctx.moveTo(mouse.x, 0); ctx.lineTo(mouse.x, canvas.height);
+        ctx.stroke();
 
-        // Set sonar pulse radar wave
+        // Small HUD Target reticle
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.15)';
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 8, 0, Math.PI * 2);
+        ctx.moveTo(mouse.x - 14, mouse.y); ctx.lineTo(mouse.x + 14, mouse.y);
+        ctx.moveTo(mouse.x, mouse.y - 14); ctx.lineTo(mouse.x, mouse.y + 14);
+        ctx.stroke();
+
+        // Live coordinate typography tag
+        ctx.font = '8px Courier New, monospace';
+        ctx.fillStyle = 'rgba(6, 182, 212, 0.45)';
+        ctx.fillText(`LOC: [${Math.floor(mouse.x)}, ${Math.floor(mouse.y)}]`, mouse.x + 15, mouse.y - 8);
+    };
+
+    // Click interactive ripple and node physics
+    window.addEventListener('click', (e) => {
+        // Trigger a sonar radar ping
         clickRipple = {
-            x: clickX,
-            y: clickY,
+            x: e.clientX,
+            y: e.clientY,
             radius: 0,
             maxRadius: 150,
             opacity: 1.0
         };
 
-        // Spawn a burst of temporary tracking telemetry nodes
+        // Spawn a burst of temporary telemetry coordinates
         for (let i = 0; i < 6; i++) {
-            const tempNode = new Particle(clickX, clickY, true);
+            const tempNode = new Particle(e.clientX, e.clientY, true);
             const angle = Math.random() * Math.PI * 2;
             const speed = Math.random() * 1.5 + 0.8;
             tempNode.speedX = Math.cos(angle) * speed;
             tempNode.speedY = Math.sin(angle) * speed;
-            tempNode.isSpecial = Math.random() < 0.5; // high rate of telemetry tags
+            tempNode.isSpecial = Math.random() < 0.5;
             particles.push(tempNode);
         }
 
-        // Apply repelling force to existing coordinates
+        // Apply physical repulsion to existing coordinates
         particles.forEach(p => {
             if (p.isTemporary) return;
-            const dx = p.x - clickX;
-            const dy = p.y - clickY;
+            const dx = p.x - e.clientX;
+            const dy = p.y - e.clientY;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 180) {
                 const force = (180 - dist) / 180;
@@ -189,6 +212,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.speedY += (dy / dist) * force * 1.2;
             }
         });
+    });
+
+    // Capture cursor coordinates
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
     });
 
     const drawClickRipple = () => {
@@ -205,20 +239,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sonar expanding stroke ring
         ctx.beginPath();
         ctx.arc(clickRipple.x, clickRipple.y, clickRipple.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(6, 182, 212, ${clickRipple.opacity * 0.4})`;
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = `rgba(6, 182, 212, ${clickRipple.opacity * 0.35})`;
+        ctx.lineWidth = 1.2;
         ctx.stroke();
 
         // Sonar center ping point
         ctx.beginPath();
-        ctx.arc(clickRipple.x, clickRipple.y, 3, 0, Math.PI * 2);
+        ctx.arc(clickRipple.x, clickRipple.y, 2.5, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(6, 182, 212, ${clickRipple.opacity})`;
         ctx.fill();
 
         // Floating ping status label
         ctx.font = '7px monospace';
-        ctx.fillStyle = `rgba(6, 182, 212, ${clickRipple.opacity * 0.6})`;
-        ctx.fillText(`PING_${Math.floor(clickRipple.x)}:${Math.floor(clickRipple.y)}`, clickRipple.x + 12, clickRipple.y - 3);
+        ctx.fillStyle = `rgba(6, 182, 212, ${clickRipple.opacity * 0.55})`;
+        ctx.fillText(`PING_[${Math.floor(clickRipple.x)}:${Math.floor(clickRipple.y)}]`, clickRipple.x + 12, clickRipple.y - 3);
     };
 
     const animate = () => {
@@ -235,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         drawConnections();
+        drawMouseTracker();
         drawClickRipple();
         requestAnimationFrame(animate);
     };
@@ -243,4 +278,3 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
     animate();
 });
-

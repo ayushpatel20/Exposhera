@@ -278,13 +278,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (enquiryForm) {
             enquiryForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (formContent) formContent.style.display = 'none';
-                if (successMsg) successMsg.style.display = 'block';
-                
-                // Close after a brief simulation timeout
+                const btn = enquiryForm.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+
+                btn.disabled = true;
+                btn.classList.add('btn-loading');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
                 setTimeout(() => {
-                    closeEnquiryForm();
-                }, 2000);
+                    btn.classList.remove('btn-loading');
+                    btn.classList.add('btn-success');
+                    btn.innerHTML = '<i class="fas fa-check"></i> Submitted!';
+
+                    setTimeout(() => {
+                        if (formContent) formContent.style.display = 'none';
+                        if (successMsg) successMsg.style.display = 'block';
+
+                        setTimeout(() => {
+                            closeEnquiryForm();
+                            // Restore original button state for next open
+                            btn.disabled = false;
+                            btn.classList.remove('btn-success');
+                            btn.innerHTML = originalText;
+                        }, 2000);
+                    }, 800);
+                }, 1500);
             });
         }
     }
@@ -307,4 +325,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 11. Reusable Click Ripple Effect for Buttons
+    const createRipple = (e) => {
+        const btn = e.currentTarget;
+        
+        // Remove existing ripples
+        const existingRipples = btn.getElementsByClassName('btn-ripple');
+        while (existingRipples.length > 0) {
+            existingRipples[0].remove();
+        }
+
+        const circle = document.createElement('span');
+        const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+        const radius = diameter / 2;
+
+        const rect = btn.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${clickX - radius}px`;
+        circle.style.top = `${clickY - radius}px`;
+        circle.classList.add('btn-ripple');
+
+        btn.appendChild(circle);
+    };
+
+    const rippleButtons = document.querySelectorAll('.btn, .bio-btn, .filter-btn');
+    rippleButtons.forEach(button => {
+        button.addEventListener('click', createRipple);
+    });
 });

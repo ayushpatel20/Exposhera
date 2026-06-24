@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Top Contact Bar -->
     <div class="top-bar">
@@ -408,6 +409,7 @@
 
     <!-- Custom JS Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
     
     <script>
         // Individual Contact Page Form Submission Handler
@@ -418,16 +420,36 @@
         if (contactForm && contactSuccessMsg) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                contactForm.style.display = 'none';
-                document.querySelector('.contact-form-header').style.display = 'none';
-                contactSuccessMsg.style.display = 'block';
-                
+                const btn = contactForm.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+
+                btn.disabled = true;
+                btn.classList.add('btn-loading');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
                 setTimeout(() => {
-                    contactForm.style.display = 'grid';
-                    document.querySelector('.contact-form-header').style.display = 'block';
-                    contactSuccessMsg.style.display = 'none';
-                    contactForm.reset();
-                }, 4000);
+                    btn.classList.remove('btn-loading');
+                    btn.classList.add('btn-success');
+                    btn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
+
+                    setTimeout(() => {
+                        contactForm.style.display = 'none';
+                        document.querySelector('.contact-form-header').style.display = 'none';
+                        contactSuccessMsg.style.display = 'block';
+                        
+                        setTimeout(() => {
+                            contactForm.style.display = 'grid';
+                            document.querySelector('.contact-form-header').style.display = 'block';
+                            contactSuccessMsg.style.display = 'none';
+                            contactForm.reset();
+                            
+                            // Restore button state
+                            btn.disabled = false;
+                            btn.classList.remove('btn-success');
+                            btn.innerHTML = originalText;
+                        }, 4000);
+                    }, 800);
+                }, 1500);
             });
         }
     </script>
