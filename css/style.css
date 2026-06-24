@@ -350,7 +350,7 @@ img {
 .bio-btn .layer-scan {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(10, 132, 255, 0.05) 2px, rgba(10, 132, 255, 0.05) 4px);
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6, 182, 212, 0.05) 2px, rgba(6, 182, 212, 0.05) 4px);
     opacity: 0.4;
     z-index: 1;
 }
@@ -360,10 +360,10 @@ img {
     left: 8%;
     right: 8%;
     height: 1.5px;
-    background: linear-gradient(90deg, transparent, #00d4ff, #0a84ff, #00d4ff, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-hover), var(--accent), transparent);
     z-index: 2;
     opacity: 0;
-    box-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.8);
 }
 
 .bio-btn:hover .layer-laser, .bio-btn.active .layer-laser {
@@ -388,7 +388,7 @@ img {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 212, 255, 0.4);
+    border: 1px solid rgba(6, 182, 212, 0.4);
     opacity: 0;
     z-index: 1;
 }
@@ -408,11 +408,11 @@ img {
     position: absolute;
     width: 3px;
     height: 3px;
-    background: #00d4ff;
+    background: var(--accent);
     border-radius: 50%;
     z-index: 3;
     opacity: 0;
-    box-shadow: 0 0 6px #00d4ff;
+    box-shadow: 0 0 6px var(--accent);
     transition: opacity var(--transition-fast);
 }
 
@@ -430,12 +430,12 @@ img {
 }
 
 .bio-btn.active {
-    background-color: rgba(10, 132, 255, 0.15);
-    color: #00d4ff;
+    background-color: var(--accent-light);
+    color: var(--accent);
 }
 
 .bio-btn.active i {
-    text-shadow: 0 0 10px #00d4ff;
+    text-shadow: 0 0 10px var(--accent);
 }
 
 .header-actions {
@@ -586,11 +586,11 @@ img {
 
 .side-links a:hover, .side-links a.active {
     background-color: rgba(255,255,255,0.04);
-    color: #00d4ff;
+    color: var(--accent);
 }
 
 .side-links a.active i {
-    color: #00d4ff;
+    color: var(--accent);
 }
 
 .side-footer {
