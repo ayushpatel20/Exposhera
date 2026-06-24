@@ -281,6 +281,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 const btn = enquiryForm.querySelector('button[type="submit"]');
                 const originalText = btn.innerHTML;
 
+                // Capture form values
+                const nameVal = enquiryForm.querySelector('input[type="text"]')?.value || 'N/A';
+                const phoneVal = enquiryForm.querySelector('input[type="tel"]')?.value || 'N/A';
+                const emailVal = enquiryForm.querySelector('input[type="email"]')?.value || 'N/A';
+                const productVal = document.getElementById('enquiryProductSelect')?.value || 'N/A';
+                const messageVal = document.getElementById('enquiryTextarea')?.value || 'N/A';
+
+                const newEnquiry = {
+                    id: 'ENQ-' + Date.now(),
+                    name: nameVal,
+                    phone: phoneVal,
+                    email: emailVal,
+                    product: productVal,
+                    message: messageVal,
+                    date: new Date().toLocaleString('en-IN')
+                };
+
+                // Store in localStorage
+                try {
+                    const existing = JSON.parse(localStorage.getItem('exposhera_enquiries')) || [];
+                    existing.unshift(newEnquiry); // Add to beginning (newest first)
+                    localStorage.setItem('exposhera_enquiries', JSON.stringify(existing));
+                } catch (err) {
+                    console.error('Error saving enquiry to localStorage:', err);
+                }
+
                 btn.disabled = true;
                 btn.classList.add('btn-loading');
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
