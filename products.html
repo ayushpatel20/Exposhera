@@ -115,8 +115,22 @@
 
             <div class="header-actions">
                 <a href="tel:9560393262" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                <a href="login.html" class="btn btn-outline btn-login-nav"><i class="fas fa-user-circle"></i> Login</a>
-                <a href="admin.html" class="btn btn-outline btn-admin-nav"><i class="fas fa-lock"></i> Admin</a>
+                <!-- Login Dropdown -->
+                <div class="nav-login-dropdown" id="navLoginDropdown">
+                    <button class="btn btn-outline btn-login-nav" id="navLoginBtn" onclick="toggleLoginDropdown(event)">
+                        <i class="fas fa-user-circle"></i> Login <i class="fas fa-chevron-down" style="font-size:0.7rem;margin-left:2px;"></i>
+                    </button>
+                    <div class="login-dropdown-menu" id="loginDropdownMenu">
+                        <a href="login.html" class="login-drop-item">
+                            <div class="ldi-icon" style="background:rgba(6,182,212,0.12);color:var(--accent);"><i class="fas fa-user-circle"></i></div>
+                            <div><strong>Client Login</strong><span>Track your enquiries</span></div>
+                        </a>
+                        <a href="admin.html" class="login-drop-item">
+                            <div class="ldi-icon" style="background:rgba(239,68,68,0.12);color:#f87171;"><i class="fas fa-shield-alt"></i></div>
+                            <div><strong>Admin Login</strong><span>Full control panel</span></div>
+                        </a>
+                    </div>
+                </div>
                 <a href="#" class="btn btn-primary float-enquiry">Get Protected</a>
             </div>
 

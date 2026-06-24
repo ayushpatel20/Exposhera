@@ -2,6 +2,28 @@
    EXPOSHERA SECURITY FORCE - INTERACTIVE CLIENT SIDE SCRIPT
    ========================================================================== */
 
+/* ── Login Dropdown Toggle ── */
+window.toggleLoginDropdown = function(e) {
+    e.stopPropagation();
+    var btn  = document.getElementById('navLoginBtn');
+    var menu = document.getElementById('loginDropdownMenu');
+    if (!btn || !menu) return;
+    var isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+};
+
+// Close dropdown when clicking anywhere outside
+document.addEventListener('click', function(e) {
+    var dropdown = document.getElementById('navLoginDropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+        var menu = document.getElementById('loginDropdownMenu');
+        var btn  = document.getElementById('navLoginBtn');
+        if (menu) menu.classList.remove('open');
+        if (btn)  btn.classList.remove('open');
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Mobile Menu Toggle
