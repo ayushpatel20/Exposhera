@@ -16,7 +16,7 @@ pages = {
 # Each entry: (href, icon, label, label_short_for_span)
 nav_items = [
     ("index.html",              "fas fa-home",        "Home"),
-    ("about.html",              "fas fa-building",    "About Us"),
+    ("about.html",              "fas fa-building",    "About"),
     ("services.html",           "fas fa-shield-alt",  "Services"),
     ("security-personnel.html", "fas fa-user-shield", "Personnel"),
     ("products.html",           "fas fa-shield-alt",  "Products"),
