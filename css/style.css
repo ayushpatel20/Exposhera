@@ -3086,6 +3086,16 @@ img {
         padding: 70px 0;
     }
     
+    .contact-form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .contact-info,
+    .contact-form-wrapper {
+        padding: 30px 20px;
+    }
+    
     .section-header h2 {
         font-size: 2rem;
     }

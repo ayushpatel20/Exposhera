@@ -287,39 +287,39 @@
                 <p>For direct payments and NEFT/RTGS transfers.</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 900px; margin: 40px auto 0; align-items: stretch;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 900px; margin: 40px auto 0; align-items: stretch;">
                 <!-- Bank Card -->
-                <div class="bank-card reveal-slide" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="bank-card reveal-slide" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 30px 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px;">
                             <div>
-                                <h3 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 5px;">Exposhera Security Force Pvt. Ltd.</h3>
+                                <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 5px;">EXPOSHERA SECURITY FORCE PVT. LTD.</h3>
                                 <span style="color: var(--text-muted); font-size: 0.9rem;">Current Account</span>
                             </div>
-                            <i class="fas fa-file-invoice-dollar" style="font-size: 2.2rem; color: var(--accent);"></i>
+                            <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: var(--accent);"></i>
                         </div>
                         
                         <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px;">
                                 <strong style="color: var(--text-muted); font-size: 0.95rem;">Account Number:</strong>
                                 <div style="display: flex; align-items: center; gap: 8px;">
-                                    <span id="bankAccountNo" style="font-size: 1.1rem; color: var(--primary); font-family: monospace; font-weight: bold; letter-spacing: 0.5px;">01234567890123</span>
+                                    <span id="bankAccountNo" style="font-size: 1.05rem; color: var(--primary); font-family: monospace; font-weight: bold; letter-spacing: 0.5px;">2502244677850330</span>
                                     <button onclick="copyBankAcc()" style="background: none; border: none; color: var(--accent); cursor: pointer; padding: 5px;" title="Copy Account Number">
                                         <i class="fas fa-copy" id="copyIcon"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px;">
                                 <strong style="color: var(--text-muted); font-size: 0.95rem;">IFSC Code:</strong>
-                                <span style="color: var(--primary); font-weight: 600;">HDFC0001234</span>
+                                <span style="color: var(--primary); font-weight: 600;">AUBL0002446</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px;">
                                 <strong style="color: var(--text-muted); font-size: 0.95rem;">Bank Name:</strong>
-                                <span style="color: var(--primary); font-weight: 600;">HDFC Bank</span>
+                                <span style="color: var(--primary); font-weight: 600;">AU Small Finance Bank</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px;">
                                 <strong style="color: var(--text-muted); font-size: 0.95rem;">Branch:</strong>
-                                <span style="color: var(--primary); font-weight: 600;">Rithala, Delhi</span>
+                                <span style="color: var(--primary); font-weight: 600; text-align: right;">Darewal, Model Town, New Delhi</span>
                             </div>
                         </div>
                     </div>
@@ -330,13 +330,13 @@
                 </div>
                 
                 <!-- QR Code Card -->
-                <div class="bank-card reveal-slide" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center;">
+                <div class="bank-card reveal-slide" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 30px 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center;">
                     <div style="width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px;">
                         <div style="text-align: left;">
-                            <h3 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 5px;">Scan & Pay</h3>
+                            <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 5px;">Scan & Pay</h3>
                             <span style="color: var(--text-muted); font-size: 0.9rem;">UPI Payments Accepted</span>
                         </div>
-                        <i class="fas fa-qrcode" style="font-size: 2.2rem; color: var(--accent);"></i>
+                        <i class="fas fa-qrcode" style="font-size: 2rem; color: var(--accent);"></i>
                     </div>
                     
                     <div style="background: #f8fafc; border-radius: 8px; padding: 12px; border: 1px solid var(--border-light); display: inline-flex; justify-content: center; align-items: center; margin-bottom: 15px; max-width: 180px; width: 100%;">
@@ -345,7 +345,7 @@
                     
                     <div style="width: 100%;">
                         <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;">UPI ID:</div>
-                        <div style="font-size: 0.9rem; color: var(--primary); font-family: monospace; font-weight: bold; word-break: break-all;">exposherasecurityforcepriva0980@aubank</div>
+                        <div style="font-size: 0.85rem; color: var(--primary); font-family: monospace; font-weight: bold; word-break: break-all;">exposherasecurityforcepriva0980@aubank</div>
                     </div>
                 </div>
             </div>
