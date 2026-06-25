@@ -410,3 +410,46 @@ weldTypes.forEach((wd, idx) => {
         moq: '100 Pcs'
     });
 });
+
+// 8. Add BOPP Bags (5 Products)
+const boppBags = [
+    { code: 'BOPP-01', size: '12 × 16', micron: '20 Micron', file: 'bopp_bags/WhatsApp Image 2026-06-25 at 11.04.46.jpeg' },
+    { code: 'BOPP-02', size: '9 × 16', micron: '18 Micron', file: 'bopp_bags/WhatsApp Image 2026-06-25 at 11.04.48 (1).jpeg' },
+    { code: 'BOPP-03', size: '10 × 14', micron: '18 Micron', file: 'bopp_bags/WhatsApp Image 2026-06-25 at 11.04.48 (2).jpeg' },
+    { code: 'BOPP-04', size: '12 × 16', micron: '20 Micron', file: 'bopp_bags/WhatsApp Image 2026-06-25 at 11.04.48.jpeg' },
+    { code: 'BOPP-05', size: '14 × 18', micron: '20 Micron', file: 'bopp_bags/WhatsApp Image 2026-06-25 at 11.04.49 (1).jpeg' }
+];
+
+boppBags.forEach((bag) => {
+    PRODUCTS_DATA.push({
+        id: bag.code,
+        code: bag.code,
+        name: `BOPP Bag (${bag.size})`,
+        category: 'bopp',
+        image: 'images/products/' + bag.file,
+        description: `Premium-grade Biaxially Oriented Polypropylene (BOPP) woven bag. Features high-definition multi-color printing, superior moisture barrier protection, and high tensile strength. Excellent for bulk packaging of rice, flour, animal feed, and industrial materials.`,
+        features: [
+            'High-gloss print finish with premium aesthetic appeal',
+            'Excellent barrier against moisture, humidity, and dust',
+            'Reinforced stitching for heavy-duty payload stability',
+            'Anti-slip properties for safe vertical stacking and logistics'
+        ],
+        specs: {
+            'Material': 'Biaxially Oriented Polypropylene (BOPP) & Woven PP',
+            'Size (Inches)': bag.size,
+            'Thickness': bag.micron,
+            'Tensile Strength': 'High Industrial Grade',
+            'MOQ': '10,000 Pcs',
+            'Closing/Sealing': 'Single/Double Folded and Bottom Stitched'
+        },
+        apps: [
+            'Agricultural Grains & Seed Packaging',
+            'Animal Feed & Pet Food Bulk Bags',
+            'Flour, Sugar, and Salt Milling Industries',
+            'Chemicals, Minerals, and Construction Powders'
+        ],
+        colors: ['Multi-color Printed', 'Custom Brand Graphics'],
+        moq: '10,000 Pcs'
+    });
+});
+

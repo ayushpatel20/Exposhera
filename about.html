@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,32 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Custom CSS -->
-        <link rel="icon" type="image/jpeg" href="images/logo.jpg">
-    <link rel="apple-touch-icon" href="images/logo.jpg">
+        <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Redesign Specific Responsive Styles */
+        @media (max-width: 992px) {
+            .counter-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .counter-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .counter-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
@@ -19,7 +42,7 @@
     <div class="top-bar">
         <div class="container">
             <div class="top-contact">
-                <a href="tel:9667416082"><i class="fas fa-phone-alt"></i> +91 96674 16082</a>
+                <a href="tel:9560393262"><i class="fas fa-phone-alt"></i> +91 95603 93262</a> <a href="tel:9560393262" style="margin-left: 10px;"><i class="fas fa-phone-alt"></i> +91 96674 16082</a>
                 <a href="mailto:Hrd.exposherasecurityforce@gmail.com"><i class="fas fa-envelope"></i> Hrd.exposherasecurityforce@gmail.com</a>
                 <a href="contact.html"><i class="fas fa-map-marker-alt"></i> Rithala, Delhi NCR</a>
             </div>
@@ -34,7 +57,7 @@
     <header class="main-header" id="mainHeader">
         <div class="container">
             <a href="index.html" class="logo-link">
-                <img src="images/logo.jpg" alt="Exposhera Security Logo" class="logo-img">
+                <img src="images/logo.png" alt="Exposhera Security Logo" class="logo-img">
                 <div class="logo-info">
                     <h2>Exposhera</h2>
                     <span>Security Force</span>
@@ -57,7 +80,12 @@
                     <i class="fas fa-shield-alt"></i><span>Services</span>
                     <div class="layer-scan"></div><div class="layer-pulse"></div><div class="layer-laser"></div>
                     <div class="bio-corner tl"></div><div class="bio-corner tr"></div><div class="bio-corner bl"></div><div class="bio-corner br"></div>
+                </a>                <a href="security-personnel.html" class="bio-btn">
+                    <i class="fas fa-user-shield"></i><span>Security Personnel</span>
+                    <div class="layer-scan"></div><div class="layer-pulse"></div><div class="layer-laser"></div>
+                    <div class="bio-corner tl"></div><div class="bio-corner tr"></div><div class="bio-corner bl"></div><div class="bio-corner br"></div>
                 </a>
+
                 <a href="products.html" class="bio-btn">
                     <i class="fas fa-shield-alt"></i><span>Products</span>
                     <div class="layer-scan"></div><div class="layer-pulse"></div><div class="layer-laser"></div>
@@ -76,7 +104,7 @@
             </nav>
 
             <div class="header-actions">
-                <a href="tel:9667416082" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="tel:9560393262" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
                 <!-- Login Dropdown -->
                 <div class="nav-login-dropdown" id="navLoginDropdown">
                     <button class="btn btn-outline btn-login-nav" id="navLoginBtn" onclick="toggleLoginDropdown(event)">
@@ -108,7 +136,7 @@
     <div class="side-menu">
         <div class="side-header">
             <div class="side-logo">
-                <img src="images/logo.jpg" alt="Logo" class="logo-img">
+                <img src="images/logo.png" alt="Logo" class="logo-img">
                 <div>
                     <h3>Exposhera</h3>
                     <span>Security Force</span>
@@ -120,6 +148,8 @@
             <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
             <a href="about.html" class="active"><i class="fas fa-building"></i> <span>About Us</span></a>
             <a href="services.html"><i class="fas fa-shield-alt"></i> <span>Services</span></a>
+            <a href="security-personnel.html"><i class="fas fa-user-shield"></i> <span>Security Personnel</span></a>
+
             <a href="products.html"><i class="fas fa-shield-alt"></i> <span>Products</span></a>
             <a href="certifications.html"><i class="fas fa-award"></i> <span>Certifications</span></a>
             <a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact Us</span></a>
@@ -127,7 +157,7 @@
         <div class="side-footer">
             <a href="#" class="btn btn-primary float-enquiry" style="width:100%"><i class="fas fa-shield-alt"></i> Get Protected Now</a>
             <div style="text-align:center; font-size:0.8rem; color:var(--text-light)">
-                <a href="tel:9667416082">+91 96674 16082</a>
+                <a href="tel:9560393262">+91 95603 93262</a> / <a href="tel:9560393262">+91 96674 16082</a>
             </div>
         </div>
     </div>
@@ -146,7 +176,7 @@
         </div>
     </section>
 
-    <!-- Main About Content Section -->
+    <!-- Redesigned About Content Section -->
     <section class="section-padding" style="background-color: var(--bg-white);">
         <div class="container">
             <div class="about-us-grid">
@@ -161,119 +191,186 @@
                 </div>
                 <div class="about-us-content reveal-slide">
                     <span class="about-tag"><i class="fas fa-shield-alt"></i> Corporate Overview</span>
-                    <h2>We Are <span class="highlight">Exposhera Security</span></h2>
-                    <p class="about-subtitle">A government-recognized agency delivering uncompromising safety, asset protection, and tactical security configurations across NCR.</p>
+                    <h2>Exposhera <span class="highlight">Security Force</span></h2>
+                    <p class="about-subtitle">Exposhera Security Force Pvt. Ltd. is India's premier, PSARA-compliant private security agency and industrial safety equipment provider.</p>
                     <div class="about-description">
-                        <p>Exposhera Security Force Private Limited is a premier, PSARA-licensed security agency with a robust combined organizational legacy of over 25 years. We operate under strict statutory compliances and code protocols in NCR, offering comprehensive safety covers to various establishments.</p>
-                        <p>Our fleet comprises 500+ highly trained, physically fit, and verified security personnel. Equipped with modern communication channels and active tactical support gear, our guards protect homes, commercial properties, corporate boardrooms, banks, and major public events.</p>
-                    </div>
-                    <div class="about-highlights">
-                        <div class="about-highlight-item">
-                            <i class="fas fa-check-double"></i>
-                            <div>
-                                <h4>PSARA Compliant</h4>
-                                <p>Licensed and regulated agency</p>
-                            </div>
-                        </div>
-                        <div class="about-highlight-item">
-                            <i class="fas fa-user-check"></i>
-                            <div>
-                                <h4>100% Verified</h4>
-                                <p>Guards background-checked</p>
-                            </div>
-                        </div>
-                        <div class="about-highlight-item">
-                            <i class="fas fa-headset"></i>
-                            <div>
-                                <h4>Active Backup</h4>
-                                <p>24/7 centralized support</p>
-                            </div>
-                        </div>
+                        <p>We are dedicated to safeguarding industrial, commercial, residential, and corporate facilities across India. Our organization blends highly trained manpower, rigorous operational standards, and modern technology to deliver custom safety covers that protect lives, assets, and reputations.</p>
+                        <p>With an active deployment of over 500+ verified guards and ex-army professionals, we offer statutory-compliant protection solutions that are monitored 24/7. In addition, we supply a wide range of premium industrial safety wear and protective gear to meet comprehensive safety mandates.</p>
                     </div>
                     <div class="about-buttons">
-                        <a href="contact.html" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Get protected now</a>
-                        <a href="services.html" class="btn btn-outline"><i class="fas fa-cog"></i> Explore services</a>
+                        <a href="contact.html" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Get Protected Now</a>
+                        <a href="services.html" class="btn btn-outline"><i class="fas fa-cog"></i> Explore Services</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission, Vision & Values Section -->
+    <!-- Mission & Vision Section -->
     <section class="section-padding mission-vision-section" style="background-color: var(--bg-light);">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag"><i class="fas fa-bullseye"></i> Corporate Core</span>
-                <h2>Mission, Vision & <span class="highlight">Values</span></h2>
-                <p>The foundations guiding our security protocols, training methods, and client safety commitments.</p>
+                <h2>Mission & <span class="highlight">Vision</span></h2>
+                <p>The core values guiding our security deployments, officer training, and quality safety products.</p>
             </div>
             
-            <div class="mission-grid">
-                <div class="mission-card reveal-slide">
-                    <div class="mission-icon"><i class="fas fa-bullseye"></i></div>
-                    <h3>Our Mission</h3>
-                    <p>To provide world-class, statutory-compliant security solutions that protect lives, valuable physical assets, and corporate reputations with integrity, discipline, and absolute commitment.</p>
+            <div class="mission-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+                <div class="mission-card reveal-slide" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); transition: var(--transition-medium);">
+                    <div class="mission-icon" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"><i class="fas fa-eye"></i></div>
+                    <h3 style="color: var(--text-light); margin-bottom: 15px; font-size: 1.5rem;">Our Vision</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Become India's most trusted security services and safety equipment company by delivering reliable manpower, innovative solutions and exceptional customer satisfaction.</p>
                 </div>
-                <div class="mission-card reveal-slide">
-                    <div class="mission-icon"><i class="fas fa-eye"></i></div>
-                    <h3>Our Vision</h3>
-                    <p>To remain Delhi NCR's most trusted protection agency, setting industry standards by integrating physical human vigilance with advanced security accessories and fast incident response.</p>
-                </div>
-                <div class="mission-card reveal-slide">
-                    <div class="mission-icon"><i class="fas fa-heart"></i></div>
-                    <h3>Core Values</h3>
-                    <p>Integrity, absolute vigilance, customer safety centricity, transparent statutory compliance, and rigorous physical standards define our recruitment and guard assignments.</p>
+                <div class="mission-card reveal-slide" style="background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); transition: var(--transition-medium);">
+                    <div class="mission-icon" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"><i class="fas fa-bullseye"></i></div>
+                    <h3 style="color: var(--text-light); margin-bottom: 15px; font-size: 1.5rem;">Our Mission</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Provide professional security personnel and industrial safety products while maintaining the highest standards of integrity, safety and quality.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline of Growth -->
-    <section class="section-padding timeline-section" style="background-color: var(--bg-white);">
+    <!-- Why Choose Us Section -->
+    <section class="section-padding why-choose-section" style="background-color: var(--bg-white);">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag"><i class="fas fa-clock"></i> Corporate History</span>
-                <h2>Our Journey of <span class="highlight">Trust</span></h2>
-                <p>Tracing the evolution of Exposhera from a regional security post into NCR's premier elite protection agency.</p>
+                <span class="section-tag"><i class="fas fa-star"></i> Why Exposhera?</span>
+                <h2>Why Choose <span class="highlight">Us</span></h2>
+                <p>We combine experience, rigorous training, and statutory excellence to offer premium protection.</p>
             </div>
             
-            <div class="timeline">
-                <div class="timeline-item left reveal">
-                    <div class="timeline-content">
-                        <h3>2025</h3>
-                        <h4>Company Incorporation</h4>
-                        <p>Exposhera Security Force Private Limited was officially incorporated and registered in North West Delhi, acquiring initial PSARA licenses.</p>
+            <div class="why-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px;">
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-user-shield" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">Professional Security Personnel</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Elite forces trained in surveillance and crisis management.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-running" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">Trained Guards</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Background verified, physically fit, and highly alert personnel.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-medal" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">Ex-Army Professionals</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Highly disciplined ex-defense guards leading operations.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-map-marked-alt" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">PAN India Service</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Capable of active guard deployments across the country.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-hard-hat" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">Industrial Safety Products</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">High-quality PPE, reflective jackets, and road safety gears.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-bolt" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">Fast Response</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Central command monitoring and quick incident deployment.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-headset" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">24×7 Support</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Constant operations helpline active for emergency dispatch.</p>
+                </div>
+                <div class="why-card" style="background: var(--bg-light); border-radius: 8px; padding: 25px; border-left: 4px solid var(--accent); transition: var(--transition-fast);">
+                    <i class="fas fa-user-tie" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; display: block;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 10px;">Experienced Management</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">Managed by a leadership team with decades of security expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Statistics Counters -->
+    <section class="counter-section section-padding" style="background: linear-gradient(135deg, rgba(8, 12, 20, 0.95) 0%, rgba(10, 43, 78, 0.95) 100%);">
+        <div class="container">
+            <div class="counter-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; text-align: center;">
+                <div class="counter-card" style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div class="counter-icon" style="font-size: 2.2rem; color: var(--accent); margin-bottom: 10px;"><i class="fas fa-history"></i></div>
+                    <div class="counter-number-wrapper" style="font-size: 2.5rem; font-weight: 700; color: var(--text-white);">
+                        <span class="counter-number" data-target="25">0</span><span>+</span>
+                    </div>
+                    <h3 style="font-size: 1rem; color: var(--text-light); margin-top: 10px; font-weight: 500;">Years of Experience</h3>
+                </div>
+                <div class="counter-card" style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div class="counter-icon" style="font-size: 2.2rem; color: var(--accent); margin-bottom: 10px;"><i class="fas fa-smile"></i></div>
+                    <div class="counter-number-wrapper" style="font-size: 2.5rem; font-weight: 700; color: var(--text-white);">
+                        <span class="counter-number" data-target="200">0</span><span>+</span>
+                    </div>
+                    <h3 style="font-size: 1rem; color: var(--text-light); margin-top: 10px; font-weight: 500;">Happy Clients</h3>
+                </div>
+                <div class="counter-card" style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div class="counter-icon" style="font-size: 2.2rem; color: var(--accent); margin-bottom: 10px;"><i class="fas fa-user-shield"></i></div>
+                    <div class="counter-number-wrapper" style="font-size: 2.5rem; font-weight: 700; color: var(--text-white);">
+                        <span class="counter-number" data-target="500">0</span><span>+</span>
+                    </div>
+                    <h3 style="font-size: 1rem; color: var(--text-light); margin-top: 10px; font-weight: 500;">Security Personnel</h3>
+                </div>
+                <div class="counter-card" style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div class="counter-icon" style="font-size: 2.2rem; color: var(--accent); margin-bottom: 10px;"><i class="fas fa-box-open"></i></div>
+                    <div class="counter-number-wrapper" style="font-size: 2.5rem; font-weight: 700; color: var(--text-white);">
+                        <span class="counter-number" data-target="1500">0</span><span>+</span>
+                    </div>
+                    <h3 style="font-size: 1rem; color: var(--text-light); margin-top: 10px; font-weight: 500;">Products Supplied</h3>
+                </div>
+                <div class="counter-card" style="padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div class="counter-icon" style="font-size: 2.2rem; color: var(--accent); margin-bottom: 10px;"><i class="fas fa-building"></i></div>
+                    <div class="counter-number-wrapper" style="font-size: 2.5rem; font-weight: 700; color: var(--text-white);">
+                        <span class="counter-number" data-target="100">0</span><span>+</span>
+                    </div>
+                    <h3 style="font-size: 1rem; color: var(--text-light); margin-top: 10px; font-weight: 500;">Corporate Clients</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section-padding certifications-section" style="background-color: var(--bg-white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-award"></i> Verification Credentials</span>
+                <h2>Our Licensing & <span class="highlight">Certifications</span></h2>
+                <p>Exposhera is registered and fully compliant with statutory agencies and private security regulations.</p>
+            </div>
+            
+            <div class="cert-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px;">
+                <div class="cert-card reveal-slide" style="background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: var(--transition-fast);">
+                    <div class="cert-img-wrapper" style="position: relative; overflow: hidden; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: #fff;">
+                        <img src="images/cert_1.jpg" alt="PSARA Compliance License" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition-medium);">
+                    </div>
+                    <div class="cert-body" style="padding: 20px;">
+                        <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 8px;">PSARA Compliance License</h3>
+                        <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Delhi Private Security Agencies (Regulation) Act Compliance</span>
                     </div>
                 </div>
                 
-                <div class="timeline-item right reveal">
-                    <div class="timeline-content">
-                        <h3>2025</h3>
-                        <h4>ISO Certification & Audits</h4>
-                        <p>Acquired ISO 9001:2015 Quality Management certification, setting strict training and auditing standards for security guards.</p>
+                <div class="cert-card reveal-slide" style="background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: var(--transition-fast);">
+                    <div class="cert-img-wrapper" style="position: relative; overflow: hidden; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: #fff;">
+                        <img src="images/cert_2.jpg" alt="ISO 9001:2015 Certified" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition-medium);">
+                    </div>
+                    <div class="cert-body" style="padding: 20px;">
+                        <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 8px;">ISO 9001:2015 Certification</h3>
+                        <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Quality Management Systems Audit Compliance</span>
                     </div>
                 </div>
                 
-                <div class="timeline-item left reveal">
-                    <div class="timeline-content">
-                        <h3>2026</h3>
-                        <h4>500+ Active Personnel</h4>
-                        <p>Grew active force to over 500+ verified guards, executive bouncers, and armed gunman stationed across corporate NCR houses.</p>
+                <div class="cert-card reveal-slide" style="background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: var(--transition-fast);">
+                    <div class="cert-img-wrapper" style="position: relative; overflow: hidden; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: #fff;">
+                        <img src="images/cert_3.jpg" alt="MSME Registration Certificate" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition-medium);">
                     </div>
-                </div>
-                
-                <div class="timeline-item right reveal">
-                    <div class="timeline-content">
-                        <h3>2026</h3>
-                        <h4>Safety Product Distribution</h4>
-                        <p>Expanded catalog to include reflective safety wear vests, winter security jackets, safety helmets, and movable traffic road barriers.</p>
+                    <div class="cert-body" style="padding: 20px;">
+                        <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 8px;">MSME / Udyam Registration</h3>
+                        <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Ministry of Micro, Small & Medium Enterprises</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Profiles -->
+    <!-- Leadership Section -->
     <section class="section-padding leadership-section" style="background-color: var(--bg-light);">
         <div class="container">
             <div class="section-header">
@@ -335,8 +432,8 @@
                 <h2>Protect Your Gated Complexes and Office Assets</h2>
                 <p>Call our office command center at Rithala, Delhi for immediate guard replacements or contract setups.</p>
                 <div class="cta-buttons">
-                    <a href="tel:9667416082" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call +91 9667416082</a>
-                    <a href="https://wa.me/919667416082" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                    <a href="tel:9560393262" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call +91 95603 93262</a>
+                    <a href="https://wa.me/919560393262" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -349,7 +446,7 @@
                 <!-- Branding Col -->
                 <div class="footer-col">
                     <div class="brand-logo" style="display:flex; align-items:center; gap:10px;">
-                        <img src="images/logo.jpg" alt="Logo" class="logo-img" style="width:40px; height:40px;">
+                        <img src="images/logo.png" alt="Logo" class="logo-img" style="width:40px; height:40px;">
                         <div>
                             <h2 style="color:var(--text-white); font-size:1.3rem;">Exposhera</h2>
                             <span style="font-size:0.6rem; letter-spacing:2.5px; color:var(--accent); text-transform:uppercase; font-weight:700;">Security Force</span>
@@ -404,7 +501,7 @@
                         <li>
                             <i class="fas fa-phone-alt"></i>
                             <span>
-                                <a href="tel:9667416082">+91 96674 16082</a><br>
+                                <a href="tel:9560393262">+91 95603 93262</a> / <a href="tel:9667416082">+91 96674 16082</a><br>
                                 <small style="color:var(--text-muted)">CEO: Mr. Manish Vishwkarma</small>
                             </span>
                         </li>
@@ -436,8 +533,8 @@
 
     <!-- Quick Floating Action Buttons -->
     <div class="quick-floating-actions">
-        <a href="tel:9667416082" class="float-btn float-call"><i class="fas fa-phone-alt"></i> <span>Call Us</span></a>
-        <a href="https://wa.me/919667416082" target="_blank" class="float-btn float-wa"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+        <a href="tel:9560393262" class="float-btn float-call"><i class="fas fa-phone-alt"></i> <span>Call Us</span></a>
+        <a href="https://wa.me/919560393262" target="_blank" class="float-btn float-wa"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
         <a href="#" class="float-btn float-enquiry"><i class="fas fa-envelope"></i> <span>Enquire</span></a>
     </div>
 
